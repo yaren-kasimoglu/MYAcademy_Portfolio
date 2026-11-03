@@ -26,5 +26,18 @@ namespace MYAcademy_Portfolio.Areas.Admin.Controllers
 
             return View(value);
         }
+
+
+        public IActionResult DeleteMessage(int id)
+        {
+            var value = _context.Messages.Find(id);
+
+            _context.Messages.Remove(value);
+            _context.SaveChanges();
+
+            return RedirectToAction("MessageList");
+        }
+
+
     }
 }
