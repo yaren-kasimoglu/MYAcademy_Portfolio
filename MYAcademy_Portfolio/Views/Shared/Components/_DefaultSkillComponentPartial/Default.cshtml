@@ -1,0 +1,53 @@
+﻿@model List<MYAcademy_Portfolio.Entities.SkillCategory>
+
+<section id="skills" style="background-color: var(--bg-secondary);">
+    <div class="container">
+
+        <div class="text-center mb-5 reveal-on-scroll">
+            <span class="section-eyebrow">
+                TEKNİK YETKİNLİKLER
+            </span>
+        </div>
+
+        <div class="row g-4">
+
+            @foreach (var category in Model)
+            {
+                <div class="@(category.DisplayOrder <= 3 ? "col-lg-4" : "col-lg-6") col-md-6 reveal-on-scroll">
+                    <div class="skill-group-card">
+
+                        <div class="d-flex align-items-center gap-3 mb-3">
+
+                            <div class="float-icon-box @category.Color">
+                                <i class="bi @category.Icon"></i>
+                            </div>
+
+                            <h4 class="fs-5 fw-bold mb-0">
+                                @category.Name
+                            </h4>
+
+                        </div>
+
+                        <p class="text-secondary small mb-3">
+                            @category.Description
+                        </p>
+
+                        <div class="d-flex flex-wrap">
+
+                            @foreach (var skill in category.Skills)
+                            {
+                                <span class="skill-chip">
+                                    <i class="bi bi-check text-success"></i>
+                                    @skill.Name
+                                </span>
+                            }
+
+                        </div>
+
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>

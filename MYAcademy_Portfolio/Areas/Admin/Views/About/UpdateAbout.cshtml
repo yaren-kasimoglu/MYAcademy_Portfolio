@@ -1,0 +1,77 @@
+﻿@model MYAcademy_Portfolio.Entities.About
+
+@{
+    ViewData["Title"] = "Hakkımda Güncelle";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h3>Hakkımda Bilgilerini Güncelle</h3>
+
+<form asp-area="Admin"
+      asp-controller="About"
+      asp-action="UpdateAbout"
+      method="post">
+
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" asp-for="AboutId" />
+
+    <div asp-validation-summary="ModelOnly"
+         class="text-danger"></div>
+
+    <div class="mb-3">
+        <label>Ad Soyad</label>
+        <input asp-for="NameSurname" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Mesleki Unvan</label>
+        <input asp-for="JobTitle" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Konum</label>
+        <input asp-for="Location" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Uzmanlık Alanları</label>
+        <input asp-for="Expert" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>E-posta</label>
+        <input asp-for="Email" type="email"
+               class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Hakkımda Açıklaması</label>
+        <textarea asp-for="Description"
+                  class="form-control"
+                  rows="5"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label>İş Durumu</label>
+        <select asp-for="OpenToWork" class="form-control">
+            <option value="İş fırsatlarına açığım">
+                İş fırsatlarına açığım
+            </option>
+            <option value="Yeni fırsatlara kapalıyım">
+                Yeni fırsatlara kapalıyım
+            </option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        Güncelle
+    </button>
+
+    <a asp-area="Admin"
+       asp-controller="About"
+       asp-action="Index"
+       class="btn btn-secondary">
+        İptal
+    </a>
+</form>

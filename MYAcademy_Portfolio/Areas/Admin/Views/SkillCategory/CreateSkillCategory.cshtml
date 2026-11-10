@@ -1,0 +1,167 @@
+﻿@model MYAcademy_Portfolio.Entities.SkillCategory
+
+@{
+    ViewData["Title"] = "Yeni Yetenek Kategorisi Ekle";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h2 class="mb-4">Yeni Yetenek Kategorisi Ekle</h2>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">Kategori Bilgileri</h5>
+    </div>
+
+    <div class="card-body">
+        <form asp-area="Admin"
+              asp-controller="SkillCategory"
+              asp-action="CreateSkillCategory"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">
+                    Kategori Adı
+                </label>
+                <input asp-for="Name"
+                       class="form-control"
+                       placeholder="Örn: Backend Development" />
+                <span asp-validation-for="Name"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">
+                    Açıklama
+                </label>
+                <textarea asp-for="Description"
+                          class="form-control"
+                          rows="3"
+                          placeholder="Kategori hakkında kısa açıklama yazınız..."></textarea>
+                <span asp-validation-for="Description"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Icon" class="form-label">
+                    İkon
+                </label>
+                <input asp-for="Icon"
+                       class="form-control"
+                       placeholder="Örn: bi-hdd-network" />
+                <span asp-validation-for="Icon"
+                      class="text-danger"></span>
+                <small class="text-muted">
+                    Bootstrap Icons sınıf adını giriniz.
+                </small>
+            </div>
+
+
+
+            <div class="mb-3">
+                <label asp-for="Color" class="form-label">Renk</label>
+
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle w-100 text-start"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            id="colorDropdownButton">
+                        Renk Seçiniz
+                    </button>
+
+
+                    <ul class="dropdown-menu w-100">
+                        <li>
+                            <button class="dropdown-item" type="button"
+                                    onmouseenter="this.style.backgroundColor='#a78bfa'; this.style.color='white'"
+                                    onmouseleave="this.style.backgroundColor=''; this.style.color=''"
+                                    onclick="selectColor('bg-icon-purple', 'Mor', '#a78bfa')">
+                                Mor
+                            </button>
+                        </li>
+
+                        <li>
+                            <button class="dropdown-item" type="button"
+                                    onmouseenter="this.style.backgroundColor='#60a5fa'; this.style.color='white'"
+                                    onmouseleave="this.style.backgroundColor=''; this.style.color=''"
+                                    onclick="selectColor('bg-icon-blue', 'Mavi', '#60a5fa')">
+                                Mavi
+                            </button>
+                        </li>
+
+                        <li>
+                            <button class="dropdown-item" type="button"
+                                    onmouseenter="this.style.backgroundColor='#34d399'; this.style.color='white'"
+                                    onmouseleave="this.style.backgroundColor=''; this.style.color=''"
+                                    onclick="selectColor('bg-icon-mint', 'Yeşil', '#34d399')">
+                                Yeşil
+                            </button>
+                        </li>
+
+                        <li>
+                            <button class="dropdown-item" type="button"
+                                    onmouseenter="this.style.backgroundColor='#fb923c'; this.style.color='white'"
+                                    onmouseleave="this.style.backgroundColor=''; this.style.color=''"
+                                    onclick="selectColor('bg-icon-peach', 'Turuncu', '#fb923c')">
+                                Turuncu
+                            </button>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <input type="hidden" asp-for="Color" id="selectedColor" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+
+            <script>
+
+                function selectColor(value, text, color) {
+                    document.getElementById("selectedColor").value = value;
+
+                    const button = document.getElementById("colorDropdownButton");
+
+                    button.textContent = text;
+                    button.style.backgroundColor = color;
+                    button.style.color = "white";
+                    button.style.borderColor = color;
+                }
+
+            </script>
+
+
+
+            <div class="mb-3">
+                <label asp-for="DisplayOrder" class="form-label">
+                    Görüntülenme Sırası
+                </label>
+                <input asp-for="DisplayOrder"
+                       type="number"
+                       min="1"
+                       class="form-control"
+                       placeholder="Örn: 1" />
+                <span asp-validation-for="DisplayOrder"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">
+                    Kaydet
+                </button>
+
+                <a asp-area="Admin"
+                   asp-controller="SkillCategory"
+                   asp-action="SkillCategoryList"
+                   class="btn btn-secondary">
+                    Geri Dön
+                </a>
+            </div>
+
+        </form>
+    </div>
+</div>

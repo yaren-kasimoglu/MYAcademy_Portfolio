@@ -1,6 +1,22 @@
-﻿namespace MYAcademy_Portfolio.ViewComponents.DefaultViewComponents
+﻿using Microsoft.AspNetCore.Mvc;
+using MYAcademy_Portfolio.Context;
+
+namespace MYAcademy_Portfolio.ViewComponents.DefaultViewComponents
 {
-    public class _DefaultAboutComponentPartial
+    public class _DefaultAboutComponentPartial : ViewComponent
     {
+        private readonly PortfolioContext _context;
+
+        public _DefaultAboutComponentPartial(PortfolioContext context)
+        {
+            _context = context;
+        }
+
+        public IViewComponentResult Invoke()
+        {
+            var value = _context.Abouts.FirstOrDefault();
+
+            return View(value);
+        }
     }
 }

@@ -270,7 +270,6 @@ namespace MYAcademy_Portfolio.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GithubUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
@@ -284,6 +283,63 @@ namespace MYAcademy_Portfolio.Migrations
                     b.ToTable("Projects");
                 });
 
+            modelBuilder.Entity("MYAcademy_Portfolio.Entities.Skill", b =>
+                {
+                    b.Property<int>("SkillId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SkillId"));
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SkillCategoryId")
+                        .HasColumnType("int");
+
+                    b.HasKey("SkillId");
+
+                    b.HasIndex("SkillCategoryId");
+
+                    b.ToTable("Skills");
+                });
+
+            modelBuilder.Entity("MYAcademy_Portfolio.Entities.SkillCategory", b =>
+                {
+                    b.Property<int>("SkillCategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SkillCategoryId"));
+
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Icon")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SkillCategoryId");
+
+                    b.ToTable("SkillCategories");
+                });
+
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.Project", b =>
                 {
                     b.HasOne("MYAcademy_Portfolio.Entities.Category", "Category")
@@ -295,9 +351,25 @@ namespace MYAcademy_Portfolio.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("MYAcademy_Portfolio.Entities.Skill", b =>
+                {
+                    b.HasOne("MYAcademy_Portfolio.Entities.SkillCategory", "SkillCategory")
+                        .WithMany("Skills")
+                        .HasForeignKey("SkillCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SkillCategory");
+                });
+
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.Category", b =>
                 {
                     b.Navigation("Projects");
+                });
+
+            modelBuilder.Entity("MYAcademy_Portfolio.Entities.SkillCategory", b =>
+                {
+                    b.Navigation("Skills");
                 });
 #pragma warning restore 612, 618
         }

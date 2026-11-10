@@ -1,0 +1,101 @@
+﻿@model MYAcademy_Portfolio.Entities.SkillCategory
+
+@{
+    ViewData["Title"] = "Yetenek Kategorisi Güncelle";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h2 class="mb-4">Yetenek Kategorisi Güncelle</h2>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">Kategori Bilgilerini Düzenle</h5>
+    </div>
+
+    <div class="card-body">
+        <form asp-area="Admin"
+              asp-controller="SkillCategory"
+              asp-action="UpdateSkillCategory"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <input type="hidden" asp-for="SkillCategoryId" />
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">
+                    Kategori Adı
+                </label>
+                <input asp-for="Name"
+                       class="form-control" />
+                <span asp-validation-for="Name"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">
+                    Açıklama
+                </label>
+                <textarea asp-for="Description"
+                          class="form-control"
+                          rows="3"></textarea>
+                <span asp-validation-for="Description"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Icon" class="form-label">
+                    İkon
+                </label>
+                <input asp-for="Icon"
+                       class="form-control" />
+                <span asp-validation-for="Icon"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Color" class="form-label">
+                    Renk
+                </label>
+                <select asp-for="Color" class="form-select">
+                    <option value="">Renk Seçiniz</option>
+                    <option value="bg-icon-purple">Mor</option>
+                    <option value="bg-icon-blue">Mavi</option>
+                    <option value="bg-icon-mint">Yeşil</option>
+                    <option value="bg-icon-peach">Turuncu</option>
+                </select>
+                <span asp-validation-for="Color"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="DisplayOrder" class="form-label">
+                    Görüntülenme Sırası
+                </label>
+                <input asp-for="DisplayOrder"
+                       type="number"
+                       min="1"
+                       class="form-control" />
+                <span asp-validation-for="DisplayOrder"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success">
+                    Güncelle
+                </button>
+
+                <a asp-area="Admin"
+                   asp-controller="SkillCategory"
+                   asp-action="SkillCategoryList"
+                   class="btn btn-secondary">
+                    İptal
+                </a>
+            </div>
+
+        </form>
+    </div>
+</div>
