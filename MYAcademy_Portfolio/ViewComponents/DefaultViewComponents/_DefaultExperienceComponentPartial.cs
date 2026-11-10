@@ -14,13 +14,16 @@ namespace MYAcademy_Portfolio.ViewComponents.DefaultViewComponents
             _context = context;
         }
 
+
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var values = await _context.Experiences
-                .OrderBy(x => x.ExperienceId)
+                .Where(x => x.IsActive == true) //sadece aktif olanlar görülmeli
+                .OrderByDescending(x => x.ExperienceId)
                 .ToListAsync();
 
             return View(values);
         }
+
     }
 }

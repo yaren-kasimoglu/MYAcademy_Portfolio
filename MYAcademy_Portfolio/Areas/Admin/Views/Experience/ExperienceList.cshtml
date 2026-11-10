@@ -24,7 +24,18 @@
                 <td>@item.Title</td>
                 <td>@item.SideTitle</td>
                 <td>@item.Duration</td>
-                <td>@(item.IsActive ? "Aktif" : "Pasif")</td>
+
+                <td>
+                    @if (item.IsActive)
+                    {
+                        <span class="badge bg-success">Aktif</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Pasif</span>
+                    }
+                </td>
+
                 <td>
                     <form asp-area="Admin"
                           asp-controller="Experience"
