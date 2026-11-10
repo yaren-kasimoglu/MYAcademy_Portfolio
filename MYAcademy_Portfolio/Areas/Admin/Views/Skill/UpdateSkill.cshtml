@@ -1,0 +1,88 @@
+﻿@model MYAcademy_Portfolio.Entities.Skill
+
+@{
+    ViewData["Title"] = "Yetenek Güncelle";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h2 class="mb-4">Yetenek Güncelle</h2>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">Yetenek Bilgilerini Düzenle</h5>
+    </div>
+
+    <div class="card-body">
+
+        <form asp-area="Admin"
+              asp-controller="Skill"
+              asp-action="UpdateSkill"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <input type="hidden" asp-for="SkillId" />
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">
+                    Yetenek Adı
+                </label>
+
+                <input asp-for="Name"
+                       class="form-control" />
+
+                <span asp-validation-for="Name"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="SkillCategoryId" class="form-label">
+                    Kategori
+                </label>
+
+                <select asp-for="SkillCategoryId"
+                        asp-items="ViewBag.Categories"
+                        class="form-select">
+                    <option value="">Kategori Seçiniz</option>
+                </select>
+
+                <span asp-validation-for="SkillCategoryId"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="DisplayOrder" class="form-label">
+                    Görüntülenme Sırası
+                </label>
+
+                <input asp-for="DisplayOrder"
+                       type="number"
+                       min="1"
+                       class="form-control" />
+
+                <span asp-validation-for="DisplayOrder"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="d-flex gap-2">
+
+                <button type="submit" class="btn btn-success">
+                    Güncelle
+                </button>
+
+                <a asp-area="Admin"
+                   asp-controller="Skill"
+                   asp-action="SkillList"
+                   class="btn btn-secondary">
+                    İptal
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>

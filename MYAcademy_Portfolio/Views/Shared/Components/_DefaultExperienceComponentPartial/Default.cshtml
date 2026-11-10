@@ -1,0 +1,164 @@
+﻿@model List<MYAcademy_Portfolio.Entities.Experience>
+
+<section id="experience">
+    <div class="container">
+
+        <div class="text-center mb-5 reveal-on-scroll">
+            <span class="section-eyebrow">PROFESYONEL YOLCULUK</span>
+            <h2 class="section-title">Deneyimlerim</h2>
+            <p class="section-subtitle">
+                Gerçek dünya problemlerini çözerken edindiğim tecrübeler.
+            </p>
+        </div>
+
+        <div class="timeline-container">
+
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var item = Model[i];
+
+                bool isLeft = i % 2 == 0;
+
+                string yearColor = i % 3 == 0
+                ? "bg-icon-purple"
+                : i % 3 == 1
+                ? "bg-icon-blue"
+                : "bg-icon-peach";
+
+                string workTypeColor = item.WorkType?.ToLowerInvariant() switch
+                {
+                    "tam zamanlı" => "bg-success-subtle text-success border-success-subtle",
+                    "yarı zamanlı" => "bg-primary-subtle text-primary border-primary-subtle",
+                    "staj" => "bg-warning-subtle text-warning border-warning-subtle",
+                    _ => "bg-secondary-subtle text-secondary border-secondary-subtle"
+                };
+
+                string markerIcon = i % 3 == 0
+                ? "bi-building"
+                : i % 3 == 1
+                ? "bi-pc-display"
+                : "bi-award";
+
+                <div class="timeline-item row align-items-center g-4 reveal-on-scroll">
+
+                    @if (!isLeft)
+                    {
+                        <div class="col-lg-6 timeline-left d-none d-lg-block">
+                            <div class="text-secondary small fst-italic">
+                                @item.SideTitle
+                            </div>
+                        </div>
+                    }
+
+                    @if (isLeft)
+                    {
+                        <div class="col-lg-6 timeline-left order-2 order-lg-1">
+
+                            <div class="timeline-content-card">
+
+                                <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
+
+                                    <span class="badge-year @yearColor">
+                                        <i class="bi bi-briefcase"></i>
+                                        @item.Duration
+                                    </span>
+
+                                    <span class="badge @workTypeColor border rounded-pill px-3 py-1 small">
+                                        @item.WorkType
+                                    </span>
+
+                                </div>
+
+                                <h4 class="fs-5 fw-bold mb-1">
+                                    @item.Title
+                                </h4>
+
+                                <div class="text-primary fw-semibold small mb-3">
+                                    @item.CompanyName
+                                </div>
+
+                                @if (!string.IsNullOrWhiteSpace(item.Description))
+                                {
+                                    <ul class="text-secondary small ps-3 mb-3"
+                                        style="line-height: 1.6;">
+
+                                        @foreach (var description in item.Description
+                                                                    .Split(new[] { '\r', '\n' },
+                                                                    StringSplitOptions.RemoveEmptyEntries))
+                                        {
+                                            <li>@description.Trim()</li>
+                                        }
+
+                                    </ul>
+                                }
+
+                            </div>
+
+                        </div>
+                    }
+
+                    <div class="timeline-marker">
+                        <i class="bi @markerIcon"></i>
+                    </div>
+
+                    @if (isLeft)
+                    {
+                        <div class="col-lg-6 timeline-right order-1 order-lg-2 d-none d-lg-block">
+                            <div class="text-secondary small fst-italic">
+                                @item.SideTitle
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-lg-6 timeline-right">
+
+                            <div class="timeline-content-card">
+
+                                <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
+
+                                    <span class="badge-year @yearColor">
+                                        <i class="bi bi-briefcase"></i>
+                                        @item.Duration
+                                    </span>
+
+                                    <span class="badge @workTypeColor border rounded-pill px-3 py-1 small">
+                                        @item.WorkType
+                                    </span>
+
+                                </div>
+
+                                <h4 class="fs-5 fw-bold mb-1">
+                                    @item.Title
+                                </h4>
+
+                                <div class="text-primary fw-semibold small mb-3">
+                                    @item.CompanyName
+                                </div>
+
+                                @if (!string.IsNullOrWhiteSpace(item.Description))
+                                {
+                                    <ul class="text-secondary small ps-3 mb-3"
+                                        style="line-height: 1.6;">
+
+                                        @foreach (var description in item.Description
+                                                                    .Split(new[] { '\r', '\n' },
+                                                                    StringSplitOptions.RemoveEmptyEntries))
+                                        {
+                                            <li>@description.Trim()</li>
+                                        }
+
+                                    </ul>
+                                }
+
+                            </div>
+
+                        </div>
+                    }
+
+                </div>
+            }
+
+        </div>
+    </div>
+</section>

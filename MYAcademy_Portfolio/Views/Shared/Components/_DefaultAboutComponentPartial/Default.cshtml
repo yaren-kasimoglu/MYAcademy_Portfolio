@@ -1,0 +1,205 @@
+﻿@model MYAcademy_Portfolio.Entities.About
+
+<section id="about">
+    <div class="container">
+
+        <div class="text-center mb-5 reveal-on-scroll">
+            <span class="section-eyebrow">BENİ TANIYIN</span>
+        </div>
+
+        <div class="row g-4 align-items-start">
+
+            <!-- SOL: KİŞİSEL BİLGİLER -->
+            <div class="col-lg-5 reveal-on-scroll">
+
+                <div class="about-visual-box h-100">
+
+                    <!-- Profil -->
+                    <div class="d-flex align-items-center gap-3 mb-4">
+
+                        <div class="float-icon-box bg-icon-purple flex-shrink-0"
+                             style="width:52px; height:52px; font-size:1.4rem;">
+                            <i class="bi bi-person-badge"></i>
+                        </div>
+
+                        <div class="flex-grow-1">
+                            <h4 class="mb-1 fs-5 fw-bold">
+                                @Model?.NameSurname
+                            </h4>
+
+                            <span class="text-secondary small">
+                                Bilgisayar Mühendisi
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <!-- Bilgiler -->
+                    <div class="info-list">
+
+                        <div class="info-list-item d-flex justify-content-between gap-3">
+                            <span class="info-label flex-shrink-0">
+                                <i class="bi bi-person me-2"></i>Ad Soyad
+                            </span>
+
+                            <span class="info-value text-end">
+                                @Model?.NameSurname
+                            </span>
+                        </div>
+
+                        <div class="info-list-item d-flex justify-content-between gap-3">
+                            <span class="info-label flex-shrink-0">
+                                <i class="bi bi-briefcase me-2"></i>Meslek
+                            </span>
+
+                            <span class="info-value text-end"
+                                  style="overflow-wrap:anywhere;">
+                                @Model?.JobTitle
+                            </span>
+                        </div>
+
+                        <div class="info-list-item d-flex justify-content-between gap-3">
+                            <span class="info-label flex-shrink-0">
+                                <i class="bi bi-geo-alt me-2"></i>Konum
+                            </span>
+
+                            <span class="info-value text-end">
+                                @Model?.Location
+                            </span>
+                        </div>
+
+                        <div class="info-list-item d-flex justify-content-between gap-3">
+                            <span class="info-label flex-shrink-0">
+                                <i class="bi bi-layers me-2"></i>Uzmanlık
+                            </span>
+
+                            <span class="info-value text-end"
+                                  style="overflow-wrap:anywhere;">
+                                @Model?.Expert
+                            </span>
+                        </div>
+
+                        <div class="info-list-item d-flex justify-content-between gap-3">
+                            <span class="info-label flex-shrink-0">
+                                <i class="bi bi-envelope me-2"></i>E-posta
+                            </span>
+
+                            <span class="info-value text-end"
+                                  style="overflow-wrap:anywhere;">
+                                <a href="mailto:@Model?.Email"
+                                   class="text-decoration-none">
+                                    @Model?.Email
+                                </a>
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <!-- İş Durumu -->
+                    <div class="mt-4 pt-2">
+
+                        <div class="p-3 rounded-4"
+                             style="background-color:var(--lavender-accent);">
+
+                            <div class="d-flex align-items-center gap-2 text-dark small fw-semibold">
+
+                                @if (Model?.OpenToWork?.Trim().ToLower() == "açık")
+                                {
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                    <span>Yeni projelere ve iş birliklerine açık</span>
+                                }
+                                else
+                                {
+                                    <i class="bi bi-x-circle-fill text-secondary"></i>
+                                    <span>Şu anda yeni iş fırsatlarına kapalı</span>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SAĞ: HAKKIMDA AÇIKLAMASI -->
+            <div class="col-lg-7 reveal-on-scroll">
+
+                <div class="pe-lg-3">
+
+                    <h4 class="fw-bold mb-3">
+                        Yazılım Geliştirme & Dijital Dönüşüm
+                    </h4>
+
+                    <p class="fs-6 text-secondary mb-4"
+                       style="line-height:1.9; white-space:pre-line;">
+                        @Model?.Description
+                    </p>
+
+                    <!-- ÖNE ÇIKAN ÖZELLİKLER -->
+                    <div class="row g-3">
+
+                        <div class="col-md-4">
+                            <div class="highlight-card h-100">
+
+                                <div class="float-icon-box bg-icon-purple mb-3">
+                                    <i class="bi bi-cpu"></i>
+                                </div>
+
+                                <h5 class="fs-6 fw-bold mb-2">
+                                    Modern Teknolojiler
+                                </h5>
+
+                                <p class="text-secondary small mb-0">
+                                    Güncel .NET ve web teknolojileriyle
+                                    sürdürülebilir çözümler.
+                                </p>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="highlight-card h-100">
+
+                                <div class="float-icon-box bg-icon-mint mb-3">
+                                    <i class="bi bi-puzzle"></i>
+                                </div>
+
+                                <h5 class="fs-6 fw-bold mb-2">
+                                    Problem Çözme
+                                </h5>
+
+                                <p class="text-secondary small mb-0">
+                                    Karmaşık süreçleri analiz ederek
+                                    verimli çözümler geliştirme.
+                                </p>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="highlight-card h-100">
+
+                                <div class="float-icon-box bg-icon-blue mb-3">
+                                    <i class="bi bi-arrow-repeat"></i>
+                                </div>
+
+                                <h5 class="fs-6 fw-bold mb-2">
+                                    Sürekli Gelişim
+                                </h5>
+
+                                <p class="text-secondary small mb-0">
+                                    Yeni teknolojileri öğrenme ve
+                                    kendimi sürekli geliştirme.
+                                </p>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

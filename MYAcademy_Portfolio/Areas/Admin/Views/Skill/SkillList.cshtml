@@ -1,0 +1,85 @@
+﻿@model List<MYAcademy_Portfolio.Entities.Skill>
+
+@{
+    ViewData["Title"] = "Yetenek Yönetimi";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h2 class="mb-4">Yetenek Yönetimi</h2>
+
+<a asp-area="Admin"
+   asp-controller="Skill"
+   asp-action="CreateSkill"
+   class="btn btn-primary mb-3">
+    + Yeni Yetenek Ekle
+</a>
+
+<div class="card">
+    <div class="card-body">
+
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Yetenek Adı</th>
+                    <th>Kategori</th>
+                    <th>Sıra</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.SkillId</td>
+                            <td>@item.Name</td>
+                            <td>@item.SkillCategory?.Name</td>
+                            <td>@item.DisplayOrder</td>
+
+                            <td>
+                                <div class="d-flex gap-2">
+
+                                    <a asp-area="Admin"
+                                       asp-controller="Skill"
+                                       asp-action="UpdateSkill"
+                                       asp-route-id="@item.SkillId"
+                                       class="btn btn-success btn-sm">
+                                        Güncelle
+                                    </a>
+
+                                    <form asp-area="Admin"
+                                          asp-controller="Skill"
+                                          asp-action="DeleteSkill"
+                                          asp-route-id="@item.SkillId"
+                                          method="post"
+                                          onsubmit="return confirm('Bu yeteneği silmek istediğinize emin misiniz?');">
+
+                                        @Html.AntiForgeryToken()
+
+                                        <button type="submit"
+                                                class="btn btn-danger btn-sm">
+                                            Sil
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" class="text-center">
+                            Henüz yetenek eklenmemiş.
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

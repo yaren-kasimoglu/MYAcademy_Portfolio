@@ -1,0 +1,72 @@
+﻿@model List<MYAcademy_Portfolio.Entities.About>
+
+@{
+    ViewData["Title"] = "Hakkımda Yönetimi";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+<a asp-area="Admin"
+   asp-controller="About"
+   asp-action="CreateAbout"
+   class="btn btn-primary mb-3">
+    + Yeni Hakkımda Bilgisi Ekle
+</a>
+<h2>Hakkımda Yönetimi</h2>
+<div class="table-responsive">
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Ad Soyad</th>
+            <th>Unvan</th>
+            <th>Konum</th>
+            <th>Uzmanlık Alanları</th>
+            <th>E-posta</th>
+            <th>Hakkımda</th>
+            <th>İş Durumu</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NameSurname</td>
+                <td>@item.JobTitle</td>
+                <td>@item.Location</td>
+                <td>@item.Expert</td>
+                <td>@item.Email</td>
+                <td>@item.Description</td>
+                <td>@item.OpenToWork</td>
+                <td style="min-width: 180px; white-space: nowrap;">
+                    <div class="d-flex align-items-center gap-2">
+
+                        <a asp-area="Admin"
+                           asp-controller="About"
+                           asp-action="UpdateAbout"
+                           asp-route-id="@item.AboutId"
+                           class="btn btn-warning btn-sm">
+                            Güncelle
+                        </a>
+
+                        <form asp-area="Admin"
+                              asp-controller="About"
+                              asp-action="DeleteAbout"
+                              asp-route-id="@item.AboutId"
+                              method="post"
+                              class="m-0"
+                              onsubmit="return confirm('Bu kaydı silmek istediğinize emin misiniz?');">
+
+                            @Html.AntiForgeryToken()
+
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                Sil
+                            </button>
+                        </form>
+
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
