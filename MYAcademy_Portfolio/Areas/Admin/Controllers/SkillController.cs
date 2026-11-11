@@ -86,6 +86,7 @@ namespace MYAcademy_Portfolio.Areas.Admin.Controllers
             value.Name = skill.Name;
             value.DisplayOrder = skill.DisplayOrder;
             value.SkillCategoryId = skill.SkillCategoryId;
+            value.LevelPercentage = skill.LevelPercentage;
 
             await _context.SaveChangesAsync();
 

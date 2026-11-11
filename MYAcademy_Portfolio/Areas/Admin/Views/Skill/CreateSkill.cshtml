@@ -67,6 +67,22 @@
                       class="text-danger"></span>
             </div>
 
+            <div class="mb-3">
+                <label asp-for="LevelPercentage" class="form-label">
+                    Yetenek Seviyesi (%)
+                </label>
+
+                <input asp-for="LevelPercentage"
+                       type="number"
+                       min="0"
+                       max="100"
+                       class="form-control"
+                       placeholder="Örn: 85" />
+
+                <span asp-validation-for="LevelPercentage"
+                      class="text-danger"></span>
+            </div>
+
             <div class="d-flex gap-2">
 
                 <button type="submit" class="btn btn-primary">

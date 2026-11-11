@@ -60,7 +60,7 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.HasKey("AboutId");
 
-                    b.ToTable("Abouts");
+                    b.ToTable("Abouts", (string)null);
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.Category", b =>
@@ -77,7 +77,7 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.Contact", b =>
@@ -114,7 +114,7 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.HasKey("ContactId");
 
-                    b.ToTable("Contacts");
+                    b.ToTable("Contacts", (string)null);
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.Education", b =>
@@ -143,7 +143,7 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.HasKey("EducationId");
 
-                    b.ToTable("Educations");
+                    b.ToTable("Educations", (string)null);
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.Experience", b =>
@@ -183,7 +183,7 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.HasKey("ExperienceId");
 
-                    b.ToTable("Experiences");
+                    b.ToTable("Experiences", (string)null);
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.HeroSection", b =>
@@ -212,7 +212,7 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.HasKey("HeroSectionId");
 
-                    b.ToTable("HeroSections");
+                    b.ToTable("HeroSections", (string)null);
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.Message", b =>
@@ -247,7 +247,7 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.HasKey("MessageId");
 
-                    b.ToTable("Messages");
+                    b.ToTable("Messages", (string)null);
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.Project", b =>
@@ -280,7 +280,7 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Projects");
+                    b.ToTable("Projects", (string)null);
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.Skill", b =>
@@ -294,6 +294,9 @@ namespace MYAcademy_Portfolio.Migrations
                     b.Property<int>("DisplayOrder")
                         .HasColumnType("int");
 
+                    b.Property<int>("LevelPercentage")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -305,7 +308,7 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.HasIndex("SkillCategoryId");
 
-                    b.ToTable("Skills");
+                    b.ToTable("Skills", (string)null);
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.SkillCategory", b =>
@@ -337,7 +340,7 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.HasKey("SkillCategoryId");
 
-                    b.ToTable("SkillCategories");
+                    b.ToTable("SkillCategories", (string)null);
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.Project", b =>
