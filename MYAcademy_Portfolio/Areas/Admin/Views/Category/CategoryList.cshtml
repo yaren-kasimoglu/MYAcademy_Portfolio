@@ -1,0 +1,127 @@
+﻿@model List<MYAcademy_Portfolio.Entities.Category>
+
+@{
+    ViewData["Title"] = "Proje Kategorileri";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h3 class="mb-4">Proje Kategorileri</h3>
+
+<a asp-area="Admin"
+   asp-controller="Category"
+   asp-action="CreateCategory"
+   class="btn btn-primary mb-3">
+    <i class="bi bi-plus-circle"></i> Yeni Kategori Ekle
+</a>
+
+<table class="table table-bordered table-hover align-middle">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Kategori Adı</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CategoryId</td>
+                    <td>@item.CategoryName</td>
+
+                    <td>
+                        <a asp-area="Admin"
+                           asp-controller="Category"
+                           asp-action="UpdateCategory"
+                           asp-route-id="@item.CategoryId"
+                           class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil-square"></i> Güncelle
+                        </a>
+
+                        <form asp-area="Admin"
+                              asp-controller="Category"
+                              asp-action="DeleteCategory"
+                              asp-route-id="@item.CategoryId"
+                              method="post"
+                              class="d-inline delete-category-form">
+
+                            @Html.AntiForgeryToken()
+
+                            <button type="submit"
+                                    class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash"></i> Sil
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center text-muted py-4">
+                    Henüz kayıtlı kategori bulunmuyor.
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    document.querySelectorAll(".delete-category-form").forEach(form => {
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: "Emin misiniz?",
+                text: "Bu kategoriyi silmek istediğinize emin misiniz?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#6c757d",
+                confirmButtonText: "Evet, Sil",
+                cancelButtonText: "İptal",
+                reverseButtons: true
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+
+            });
+        });
+
+    });
+</script>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: "success",
+            title: "İşlem Başarılı!",
+            text: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(TempData["SuccessMessage"])),
+            confirmButtonText: "Tamam",
+            confirmButtonColor: "#198754"
+        });
+    </script>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: "error",
+            title: "İşlem Gerçekleştirilemedi!",
+            text: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(TempData["ErrorMessage"])),
+            confirmButtonText: "Tamam",
+            confirmButtonColor: "#d33"
+        });
+    </script>
+}

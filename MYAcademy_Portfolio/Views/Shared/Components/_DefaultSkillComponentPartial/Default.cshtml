@@ -32,14 +32,33 @@
                             @category.Description
                         </p>
 
-                        <div class="d-flex flex-wrap">
+                        <div class="d-flex flex-column gap-3">
 
-                            @foreach (var skill in category.Skills)
+                            @foreach (var skill in category.Skills.OrderBy(x => x.DisplayOrder))
                             {
-                                <span class="skill-chip">
-                                    <i class="bi bi-check text-success"></i>
-                                    @skill.Name
-                                </span>
+                                <div class="w-100">
+
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span class="small fw-semibold">
+                                            @skill.Name
+                                        </span>
+
+                                        <span class="small text-secondary">
+                                            @skill.LevelPercentage%
+                                        </span>
+                                    </div>
+
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar @category.Color"
+                                             role="progressbar"
+                                             style="width: @(skill.LevelPercentage)%"
+                                             aria-valuenow="@skill.LevelPercentage"
+                                             aria-valuemin="0"
+                                             aria-valuemax="100">
+                                        </div>
+                                    </div>
+
+                                </div>
                             }
 
                         </div>

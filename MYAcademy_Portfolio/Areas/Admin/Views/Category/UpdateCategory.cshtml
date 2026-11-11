@@ -1,0 +1,44 @@
+﻿@model MYAcademy_Portfolio.Entities.Category
+
+@{
+    ViewData["Title"] = "Kategori Güncelle";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h3>Proje Kategorisi Güncelle</h3>
+
+<form asp-area="Admin"
+      asp-controller="Category"
+      asp-action="UpdateCategory"
+      method="post">
+
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" asp-for="CategoryId" />
+
+    <div asp-validation-summary="ModelOnly"
+         class="text-danger mb-3"></div>
+
+    <div class="mb-3">
+        <label asp-for="CategoryName" class="form-label">
+            Kategori Adı
+        </label>
+
+        <input asp-for="CategoryName"
+               class="form-control" />
+
+        <span asp-validation-for="CategoryName"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Değişiklikleri Kaydet
+    </button>
+
+    <a asp-area="Admin"
+       asp-controller="Category"
+       asp-action="CategoryList"
+       class="btn btn-secondary">
+        İptal
+    </a>
+</form>
