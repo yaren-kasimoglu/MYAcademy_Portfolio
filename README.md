@@ -77,6 +77,12 @@ Screenshots of the portfolio and dashboard will be added soon.
 
 This project strengthened my experience with MVC architecture, EF Core and LINQ, CRUD operations, relational data models, reusable ViewComponents, dashboard reporting, and responsive web interfaces.
 
+<img width="2542" height="1271" alt="image" src="https://github.com/user-attachments/assets/f30f17fd-e74e-4faf-9e9c-e9b0a4ee0391" />
+
+<img width="2539" height="1230" alt="image" src="https://github.com/user-attachments/assets/5b145824-05b0-4534-a6a5-f5d1563b37a2" />
+
+
+
 ## Developer
 
 **Yaren Kasımoğlu**  
