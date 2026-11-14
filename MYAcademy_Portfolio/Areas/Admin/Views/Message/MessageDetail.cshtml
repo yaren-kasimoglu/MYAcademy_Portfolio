@@ -1,0 +1,46 @@
+﻿@model MYAcademy_Portfolio.Entities.Message
+
+@{
+    ViewData["Title"] = "Mesaj Detayı";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h4 class="mb-4">Mesaj Detayı</h4>
+
+<div class="card">
+    <div class="card-body">
+
+        <div class="mb-3">
+            <label class="fw-bold">Gönderen</label>
+            <p>@Model.NameSurname</p>
+        </div>
+
+        <div class="mb-3">
+            <label class="fw-bold">E-posta</label>
+            <p>@Model.Email</p>
+        </div>
+
+        <div class="mb-3">
+            <label class="fw-bold">Konu</label>
+            <p>@Model.Subject</p>
+        </div>
+
+        <div class="mb-3">
+            <label class="fw-bold">Mesaj</label>
+            <p style="white-space: pre-wrap;">@Model.MessageDetail</p>
+        </div>
+
+        <div class="mb-3">
+            <label class="fw-bold">Gönderim Tarihi</label>
+            <p>@Model.SendDate.ToString("dd.MM.yyyy HH:mm")</p>
+        </div>
+
+        <a asp-area="Admin"
+           asp-controller="Message"
+           asp-action="MessageList"
+           class="btn btn-secondary">
+            Listeye Dön
+        </a>
+
+    </div>
+</div>

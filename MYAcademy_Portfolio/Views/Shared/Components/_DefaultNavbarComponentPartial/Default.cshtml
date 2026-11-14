@@ -1,4 +1,24 @@
-﻿<!-- Ambient Blobs -->
+﻿<style>
+.cv-download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 30px;
+    background: #6f42c1;
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.cv-download-btn:hover {
+    background: #59359a;
+    color: white;
+    transform: translateY(-2px);
+}
+</style>
+<!-- Ambient Blobs -->
 <div class="blob-bg blob-1"></div>
 <div class="blob-bg blob-2"></div>
 <div class="blob-bg blob-3"></div>
@@ -8,7 +28,7 @@
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="#home">
             <span class="brand-mark">YK</span>
-            <span class="brand-name">Yaren</span>
+            <span class="brand-name">Yaren Kasımoğlu</span>
         </a>
 
         <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Menüyü Aç/Kapat">
@@ -41,10 +61,14 @@
             </ul>
 
             <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
-                <a href="#contact" class="btn-custom-primary" id="btnDownloadCv">
-                    <i class="bi bi-file-earmark-arrow-down"></i>
+
+                <a asp-area=""
+                   asp-controller="Cv"
+                   asp-action="Download"
+                   class="cv-download-btn">
                     CV İndir
                 </a>
+
             </div>
         </div>
     </div>

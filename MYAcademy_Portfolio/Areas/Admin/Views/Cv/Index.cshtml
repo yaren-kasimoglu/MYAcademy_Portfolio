@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewData["Title"] = "CV Yönetimi";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container-fluid py-3">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-white py-3">
+            <h4 class="mb-0">CV Yönetimi</h4>
+        </div>
+
+        <div class="card-body">
+
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["SuccessMessage"]
+                </div>
+            }
+
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["ErrorMessage"]
+                </div>
+            }
+
+            @if (ViewBag.CvExists == true)
+            {
+                <div class="alert alert-success">
+                    Güncel CV dosyanız mevcut.
+                </div>
+
+                <a asp-area=""
+                   asp-controller="Cv"
+                   asp-action="Download"
+                   class="btn btn-outline-primary mb-4">
+                    Mevcut CV'yi İndir
+                </a>
+            }
+            else
+            {
+                <div class="alert alert-warning">
+                    Henüz CV yüklenmedi.
+                </div>
+            }
+
+            <form asp-area="Admin"
+                  asp-controller="Cv"
+                  asp-action="UploadCv"
+                  method="post"
+                  enctype="multipart/form-data">
+
+                @Html.AntiForgeryToken()
+
+                <div class="mb-3">
+                    <label for="cvFile" class="form-label">
+                        Yeni CV Dosyası
+                    </label>
+
+                    <input type="file"
+                           id="cvFile"
+                           name="cvFile"
+                           class="form-control"
+                           accept=".pdf,application/pdf"
+                           required />
+
+                    <div class="form-text">
+                        PDF formatında, en fazla 5 MB.
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    CV'yi Güncelle
+                </button>
+
+            </form>
+        </div>
+    </div>
+</div>

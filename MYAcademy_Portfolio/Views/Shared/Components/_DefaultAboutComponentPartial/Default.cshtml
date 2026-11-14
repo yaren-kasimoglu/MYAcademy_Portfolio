@@ -5,6 +5,10 @@
 
         <div class="text-center mb-5 reveal-on-scroll">
             <span class="section-eyebrow">BENİ TANIYIN</span>
+            <h2 class="section-title">Hakkımda</h2>
+            <p class="section-subtitle">
+                Yazılım geliştirme, otomasyon ve dijital dönüşüm yolculuğum.
+            </p>
         </div>
 
         <div class="row g-4 align-items-start">
@@ -28,7 +32,7 @@
                             </h4>
 
                             <span class="text-secondary small">
-                                Bilgisayar Mühendisi
+                                @Model?.JobTitle
                             </span>
                         </div>
 
@@ -103,16 +107,23 @@
 
                             <div class="d-flex align-items-center gap-2 text-dark small fw-semibold">
 
-                                @if (Model?.OpenToWork?.Trim().ToLower() == "açık")
+
+                                @if (Model?.OpenToWork?.Trim().ToLowerInvariant() == "açık")
                                 {
                                     <i class="bi bi-check-circle-fill text-success"></i>
                                     <span>Yeni projelere ve iş birliklerine açık</span>
                                 }
-                                else
+                                else if (Model?.OpenToWork?.Trim().ToLowerInvariant() == "kapalı")
                                 {
                                     <i class="bi bi-x-circle-fill text-secondary"></i>
                                     <span>Şu anda yeni iş fırsatlarına kapalı</span>
                                 }
+                                else
+                                {
+                                    <i class="bi bi-info-circle-fill text-primary"></i>
+                                    <span>İş durumu belirtilmedi</span>
+                                }
+
 
                             </div>
                         </div>

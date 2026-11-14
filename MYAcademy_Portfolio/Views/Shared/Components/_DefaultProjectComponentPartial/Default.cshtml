@@ -3,74 +3,173 @@
 <!-- Portfolio Projects Section -->
 <section id="projects">
     <div class="container">
+
         <div class="text-center mb-4 reveal-on-scroll">
             <span class="section-eyebrow">SEÇİLMİŞ ÇALIŞMALAR</span>
-            <h2 class="section-title">Projelerim</h2>
-            <p class="section-subtitle">Öğrendiklerimi gerçek ürünlere dönüştürdüğüm çalışmalar.</p>
+            <p class="section-subtitle">
+                Öğrendiklerimi gerçek ürünlere dönüştürdüğüm çalışmalar.
+            </p>
         </div>
 
+        @{
+            var activeProjects = Model
+            .Where(x => x.IsActive)
+            .ToList();
+
+            var categories = activeProjects
+            .Where(x => x.Category != null)
+            .GroupBy(x => new
+            {
+                x.CategoryId,
+                x.Category.CategoryName
+            })
+            .Select(x => new
+            {
+                Id = x.Key.CategoryId,
+                Name = x.Key.CategoryName
+            })
+            .OrderBy(x => x.Name)
+            .ToList();
+        }
+
         <!-- Category Filter Buttons -->
-        <div class="d-flex justify-content-center flex-wrap gap-2 mb-5 reveal-on-scroll" id="projectFilterGroup">
-            <button class="filter-btn active" data-filter="all">Tümü</button>
-            <button class="filter-btn" data-filter="web-app">Web Uygulamaları</button>
-            <button class="filter-btn" data-filter="dashboard">Dashboard</button>
-            <button class="filter-btn" data-filter="api-projects">API Projeleri</button>
+        <div class="d-flex justify-content-center flex-wrap gap-2 mb-5 reveal-on-scroll"
+             id="projectFilterGroup">
+
+            <button type="button"
+                    class="filter-btn active"
+                    data-filter="all">
+                Tümü
+            </button>
+
+            @foreach (var category in categories)
+            {
+                <button type="button"
+                        class="filter-btn"
+                        data-filter="@category.Id">
+                    @category.Name
+                </button>
+            }
+
         </div>
 
         <!-- Project Cards Grid -->
         <div class="row g-4" id="projectGrid">
-            @foreach (var item in Model)
+
+            @if (!activeProjects.Any())
             {
-                <div class="col-lg-4 col-md-6 project-item" data-category="web-app">
-                    <div class="project-card reveal-on-scroll">
-
-                        <!-- Project Image -->
-                        <div class="project-thumb"
-                             style="width:100%; aspect-ratio:16/9; overflow:hidden;">
-
-                            <img src="@item.CoverImageUrl"
-                                 alt="@item.Title"
-                                 style="width:100%;
-                                                    height:100%;
-                                                    object-fit:cover;
-                                                    display:block;" />
-                        </div>
-
-                        <!-- Project Content -->
-                        <div class="project-body">
-                            <span class="project-category-badge">@item.Category.CategoryName</span>
-
-                            <h3 class="project-title">@item.Title</h3>
-
-                            <p class="project-desc">@item.Description</p>
-
-                            <!-- Technologies -->
-                            <div class="mb-3">
-                                <span class="tech-tag">ASP.NET Core</span>
-                                <span class="tech-tag">EF Core</span>
-                                <span class="tech-tag">SQL Server</span>
-                                <span class="tech-tag">Bootstrap</span>
-                            </div>
-
-                            <!-- Project Links -->
-                            <div class="project-footer">
-                                <a href="@item.GithubUrl"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   class="project-link-btn">
-                                    <i class="bi bi-github"></i> GitHub
-                                </a>
-
-                                <a href="#projects"
-                                   class="project-link-btn text-primary">
-                                    <i class="bi bi-box-arrow-up-right"></i> Canlı Demo
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
+                <div class="col-12 text-center py-5">
+                    <p class="text-secondary">
+                        Henüz yayınlanmış proje bulunmuyor.
+                    </p>
                 </div>
             }
+            else
+            {
+                @foreach (var item in activeProjects)
+                {
+                    <div class="col-lg-4 col-md-6 project-item"
+                         data-category="@item.CategoryId">
+
+                        <div class="project-card reveal-on-scroll">
+
+                            <!-- Project Image -->
+                            <div class="project-thumb"
+                                 style="width:100%; aspect-ratio:16/9; overflow:hidden;">
+
+                                @if (!string.IsNullOrWhiteSpace(item.CoverImageUrl))
+                                {
+                                    <img src="@item.CoverImageUrl"
+                                         alt="@item.Title"
+                                         style="width:100%;
+                                                            height:100%;
+                                                            object-fit:cover;
+                                                            display:block;" />
+                                }
+
+                            </div>
+
+                            <!-- Project Content -->
+                            <div class="project-body">
+
+                                <span class="project-category-badge">
+                                    @(item.Category?.CategoryName ?? "Kategorisiz")
+                                </span>
+
+                                <h3 class="project-title">
+                                    @item.Title
+                                </h3>
+
+                                <p class="project-desc">
+                                    @item.Description
+                                </p>
+
+                                <!-- Project Links -->
+                                <div class="project-footer">
+
+                                    @if (!string.IsNullOrWhiteSpace(item.GithubUrl))
+                                    {
+                                        <a href="@item.GithubUrl"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           class="project-link-btn">
+                                            <i class="bi bi-github"></i>
+                                            GitHub
+                                        </a>
+                                    }
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            }
+
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const filterButtons =
+            document.querySelectorAll("#projectFilterGroup .filter-btn");
+
+        const projects =
+            document.querySelectorAll("#projectGrid .project-item");
+
+        filterButtons.forEach(button => {
+
+            button.addEventListener("click", function () {
+
+                const selectedCategory =
+                    this.getAttribute("data-filter");
+
+                filterButtons.forEach(btn =>
+                    btn.classList.remove("active")
+                );
+
+                this.classList.add("active");
+
+                projects.forEach(project => {
+
+                    const projectCategory =
+                        project.getAttribute("data-category");
+
+                    const isVisible =
+                        selectedCategory === "all" ||
+                        projectCategory === selectedCategory;
+
+                    project.style.display =
+                        isVisible ? "" : "none";
+
+                });
+
+            });
+
+        });
+
+    });
+</script>

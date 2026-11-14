@@ -1,0 +1,127 @@
+﻿@model List<MYAcademy_Portfolio.Entities.Project>
+
+@{
+    ViewData["Title"] = "Proje Yönetimi";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<a asp-area="Admin"
+   asp-controller="Project"
+   asp-action="CreateProject"
+   class="btn btn-primary mb-3">
+    <i class="bi bi-plus-circle"></i> Yeni Proje Ekle
+</a>
+
+<table class="table table-bordered table-hover align-middle">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Görsel</th>
+            <th>Proje Adı</th>
+            <th>Kategori</th>
+            <th>GitHub</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProjectId</td>
+
+                    <td>
+                        <img src="@item.CoverImageUrl"
+                             alt="@item.Title"
+                             width="90"
+                             style="height:60px; object-fit:cover;" />
+                    </td>
+
+                    <td>@item.Title</td>
+
+                    <td>
+                        <span class="badge bg-info text-dark">
+                            @item.Category?.CategoryName
+                        </span>
+                    </td>
+
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.GithubUrl))
+                        {
+                            <a href="@item.GithubUrl"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="btn btn-outline-dark btn-sm">
+                                GitHub
+                            </a>
+                        }
+                        else
+                        {
+                            <span class="text-muted">-</span>
+                        }
+                    </td>
+
+                    <td>
+                        <a asp-area="Admin"
+                           asp-controller="Project"
+                           asp-action="UpdateProject"
+                           asp-route-id="@item.ProjectId"
+                           class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil-square"></i> Güncelle
+                        </a>
+
+                        <form asp-area="Admin"
+                              asp-controller="Project"
+                              asp-action="DeleteProject"
+                              asp-route-id="@item.ProjectId"
+                              method="post"
+                              class="d-inline delete-project-form">
+
+                            @Html.AntiForgeryToken()
+
+                            <button type="submit"
+                                    class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash"></i> Sil
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center text-muted py-4">
+                    Henüz kayıtlı proje bulunmuyor.
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    document.querySelectorAll(".delete-project-form").forEach(form => {
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: "Emin misiniz?",
+                text: "Bu projeyi silmek istiyor musunuz?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#6c757d",
+                confirmButtonText: "Evet, Sil",
+                cancelButtonText: "İptal"
+            }).then(result => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    });
+</script>

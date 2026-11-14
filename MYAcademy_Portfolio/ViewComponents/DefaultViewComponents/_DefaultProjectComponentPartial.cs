@@ -11,10 +11,17 @@ namespace MYAcademy_Portfolio.ViewComponents.DefaultViewComponents
         {
             _context = context;
         }
-        public IViewComponentResult Invoke()
+
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            var values = _context.Projects.Include(x => x.Category).ToList();
-            return View(values);
+            var projects = await _context.Projects
+                .Include(x => x.Category)
+                .Where(x => x.IsActive)
+                .OrderByDescending(x => x.ProjectId)
+                .ToListAsync();
+
+            return View(projects);
         }
+
     }
 }

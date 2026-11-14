@@ -209,161 +209,29 @@
     </section> *@
 
     <!-- Contact Section -->
-    <section id="contact" style="background-color: var(--bg-secondary);">
-        <div class="container">
-            <div class="text-center mb-5 reveal-on-scroll">
-                <span class="section-eyebrow">İLETİŞİME GEÇELİM</span>
-                <h2 class="section-title">Birlikte Harika İşler Üretebiliriz.</h2>
-                <p class="section-subtitle">Yeni projeler, iş birlikleri veya yalnızca merhaba demek için benimle iletişime geçebilirsiniz.</p>
-            </div>
-
-            <div class="row g-5">
-                <!-- Left: Contact Details -->
-                <div class="col-lg-5 reveal-on-scroll">
-                    <div class="contact-info-card">
-                        <h4 class="fs-4 fw-bold mb-3">İletişim Bilgileri</h4>
-                        <p class="text-secondary mb-4">
-                            Aşağıdaki iletişim kanalları üzerinden doğrudan bana ulaşabilir veya formu doldurarak mesaj bırakabilirsiniz. En kısa sürede dönüş sağlayacağım.
-                        </p>
-
-                        <div class="contact-item">
-                            <div class="contact-icon bg-icon-purple">
-                                <i class="bi bi-envelope"></i>
-                            </div>
-                            <div>
-                                <div class="text-secondary small fw-medium">E-posta</div>
-                                <a href="mailto:poyraz.alsever@example.com" class="text-decoration-none fw-bold text-dark">poyraz.alsever@example.com</a>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon bg-icon-blue">
-                                <i class="bi bi-geo-alt"></i>
-                            </div>
-                            <div>
-                                <div class="text-secondary small fw-medium">Konum</div>
-                                <div class="fw-bold text-dark">İstanbul, Türkiye</div>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon bg-icon-mint">
-                                <i class="bi bi-linkedin"></i>
-                            </div>
-                            <div>
-                                <div class="text-secondary small fw-medium">LinkedIn</div>
-                                <a href="https://linkedin.com" target="_blank" rel="noopener" class="text-decoration-none fw-bold text-dark">linkedin.com/in/poyrazalsever</a>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon bg-icon-peach">
-                                <i class="bi bi-github"></i>
-                            </div>
-                            <div>
-                                <div class="text-secondary small fw-medium">GitHub</div>
-                                <a href="https://github.com" target="_blank" rel="noopener" class="text-decoration-none fw-bold text-dark">github.com/poyrazalsever</a>
-                            </div>
-                        </div>
-
-                        <div class="mt-4 p-3 rounded-4 bg-white border border-light-subtle">
-                            <div class="d-flex align-items-center gap-2 text-secondary small">
-                                <i class="bi bi-clock-history text-primary"></i> Genellikle 24 saat içinde yanıt verilir.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right: Contact Form -->
-                <div class="col-lg-7 reveal-on-scroll">
-                    <div class="contact-form-card">
-                        <form id="contactForm" novalidate>
-                            <!-- Info note for ASP.NET integration -->
-                            <div class="alert alert-info border-0 rounded-3 small py-2 px-3 mb-4 d-flex align-items-center gap-2" role="alert">
-                                <i class="bi bi-info-circle-fill fs-5"></i>
-                                <div>
-                                    <strong>Demo Modu:</strong> Bu form tasarımı ASP.NET Core MVC Controller entegrasyonu için hazırdır. Gönderim simüle edilir.
-                                </div>
-                            </div>
-
-                            <div id="formSuccessMessage" class="alert alert-success border-0 rounded-3 small py-2 px-3 mb-4 d-none" role="alert">
-                                <i class="bi bi-check-circle-fill me-2"></i> Mesajınız başarıyla iletildi! Teşekkür ederiz.
-                            </div>
-
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label for="contactFullName" class="form-label">Adınız Soyadınız *</label>
-                                    <input type="text" class="form-control" id="contactFullName" name="FullName" placeholder="Örn: Ahmet Yılmaz" required>
-                                    <div class="invalid-feedback">Lütfen adınızı ve soyadınızı giriniz.</div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label for="contactEmail" class="form-label">E-posta Adresiniz *</label>
-                                    <input type="email" class="form-control" id="contactEmail" name="Email" placeholder="Örn: ahmet@example.com" required>
-                                    <div class="invalid-feedback">Geçerli bir e-posta adresi giriniz.</div>
-                                </div>
-
-                                <div class="col-12">
-                                    <label for="contactSubject" class="form-label">Konu *</label>
-                                    <input type="text" class="form-control" id="contactSubject" name="Subject" placeholder="Örn: Proje İş Birliği veya Danışmanlık" required>
-                                    <div class="invalid-feedback">Lütfen mesaj konusunu belirtiniz.</div>
-                                </div>
-
-                                <div class="col-12">
-                                    <label for="contactMessage" class="form-label">Mesajınız *</label>
-                                    <textarea class="form-control" id="contactMessage" name="Message" rows="5" placeholder="Projeniz veya paylaşmak istedikleriniz hakkında detay verebilirsiniz..." required></textarea>
-                                    <div class="invalid-feedback">Lütfen mesajınızı yazınız.</div>
-                                </div>
-
-                                <div class="col-12 mt-4">
-                                    <button type="submit" class="btn-custom-primary w-100 justify-content-center py-3">
-                                        <i class="bi bi-send-fill"></i> Mesaj Gönder
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @await Component.InvokeAsync("_DefaultContactComponentPartial")
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="row g-4 align-items-center mb-5">
                 <!-- Col 1: Brand -->
-                <div class="col-lg-4 text-center text-lg-start">
+                <div class="col-lg-6 text-center text-lg-start">
                     <a class="navbar-brand d-inline-flex align-items-center mb-2" href="#home">
-                        <span class="brand-mark">P</span>
-                        <span class="brand-name">Poyraz<span>.</span></span>
+                        <span class="brand-mark">YK</span>
+                        <span class="brand-name">Yaren<span>.</span></span>
                     </a>
                     <p class="text-secondary small mb-0">Teknoloji, tasarım ve yaratıcılıkla geliştirildi.</p>
                 </div>
 
                 <!-- Col 2: Navigation Links -->
-                <div class="col-lg-4 text-center">
+                <div class="col-lg-6 text-center text-lg-end">
                     <ul class="list-inline mb-0">
                         <li class="list-inline-item mx-2"><a href="#home" class="footer-link">Ana Sayfa</a></li>
                         <li class="list-inline-item mx-2"><a href="#about" class="footer-link">Hakkımda</a></li>
                         <li class="list-inline-item mx-2"><a href="#projects" class="footer-link">Projelerim</a></li>
                         <li class="list-inline-item mx-2"><a href="#contact" class="footer-link">İletişim</a></li>
                     </ul>
-                </div>
-
-                <!-- Col 3: Social Links -->
-                <div class="col-lg-4 text-center text-lg-end">
-                    <div class="d-inline-flex gap-2">
-                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
-                            <i class="bi bi-github"></i>
-                        </a>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
-                            <i class="bi bi-linkedin"></i>
-                        </a>
-                        <a href="https://medium.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Medium">
-                            <i class="bi bi-medium"></i>
-                        </a>
-                    </div>
                 </div>
             </div>
 
@@ -388,13 +256,12 @@
         document.addEventListener('DOMContentLoaded', function () {
 
           // 1. TYPING ANIMATION (Turkish sentences, letter-by-letter, infinite loop)
-          const sentences = [
-            "Modern Web Uygulamaları Geliştiriyorum.",
-            "Yazılımla Problemlere Çözüm Üretiyorum.",
-            "Kullanıcı Odaklı Deneyimler Tasarlıyorum.",
-            "Yeni Teknolojilerle Geleceği İnşa Ediyorum."
-          ];
-
+        const sentences = [
+            "ASP.NET Core ile Web Uygulamaları Geliştiriyorum.",
+            "Power Platform ile Süreçleri Otomatikleştiriyorum.",
+            "Yazılım ve Dijital Dönüşüm Alanında Çalışıyorum.",
+            "İş Süreçlerine Teknoloji Odaklı Çözümler Üretiyorum."
+        ];
           const typedTextElement = document.getElementById('typedText');
           let sentenceIndex = 0;
           let charIndex = 0;
@@ -436,16 +303,15 @@
           const navbar = document.getElementById('mainNavbar');
           const scrollTopBtn = document.getElementById('scrollToTopBtn');
 
-          window.addEventListener('scroll', function () {
-            if (window.scrollY > 50) {
-              navbar.classList.add('scrolled');
-              scrollTopBtn.classList.add('visible');
-            } else {
-              navbar.classList.remove('scrolled');
-              scrollTopBtn.classList.remove('visible');
+            window.addEventListener('scroll', function () {
+            if (navbar) {
+                navbar.classList.toggle('scrolled', window.scrollY > 50);
             }
-          }, { passive: true });
 
+            if (scrollTopBtn) {
+                scrollTopBtn.classList.toggle('visible', window.scrollY > 50);
+            }
+        }, { passive: true });
           // Scroll to Top action
           if (scrollTopBtn) {
             scrollTopBtn.addEventListener('click', function () {
@@ -461,7 +327,9 @@
           const navbarCollapse = document.getElementById('navbarContent');
           navLinks.forEach(function (link) {
             link.addEventListener('click', function () {
-              if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
+                 if (window.innerWidth < 992 &&
+        navbarCollapse &&
+        navbarCollapse.classList.contains('show')) {
                 const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
                 if (bsCollapse) {
                   bsCollapse.hide();
@@ -514,27 +382,21 @@
           }
 
           // 5. CONTACT FORM VALIDATION & DEMO SUBMISSION (HTML5 + Vanilla JS)
-          const contactForm = document.getElementById('contactForm');
-          const formSuccessMessage = document.getElementById('formSuccessMessage');
 
-          if (contactForm) {
-            contactForm.addEventListener('submit', function (event) {
-              event.preventDefault();
-              event.stopPropagation();
+        const contactForm = document.getElementById("contactForm");
 
-              if (!contactForm.checkValidity()) {
-                contactForm.classList.add('was-validated');
-              } else {
-                contactForm.classList.remove('was-validated');
-                formSuccessMessage.classList.remove('d-none');
-                contactForm.reset();
+        if (contactForm) {
+            contactForm.addEventListener("submit", function (event) {
 
-                setTimeout(() => {
-                  formSuccessMessage.classList.add('d-none');
-                }, 6000);
-              }
+                if (!contactForm.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+                contactForm.classList.add("was-validated");
             });
-          }
+        }
+
 
         });
     </script>

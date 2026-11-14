@@ -60,7 +60,7 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.HasKey("AboutId");
 
-                    b.ToTable("Abouts", (string)null);
+                    b.ToTable("Abouts");
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.Category", b =>
@@ -73,11 +73,12 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.Contact", b =>
@@ -114,7 +115,7 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.HasKey("ContactId");
 
-                    b.ToTable("Contacts", (string)null);
+                    b.ToTable("Contacts");
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.Education", b =>
@@ -143,7 +144,7 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.HasKey("EducationId");
 
-                    b.ToTable("Educations", (string)null);
+                    b.ToTable("Educations");
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.Experience", b =>
@@ -183,7 +184,7 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.HasKey("ExperienceId");
 
-                    b.ToTable("Experiences", (string)null);
+                    b.ToTable("Experiences");
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.HeroSection", b =>
@@ -212,7 +213,7 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.HasKey("HeroSectionId");
 
-                    b.ToTable("HeroSections", (string)null);
+                    b.ToTable("HeroSections");
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.Message", b =>
@@ -232,22 +233,25 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.Property<string>("MessageDetail")
                         .IsRequired()
+                        .HasMaxLength(5000)
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameSurname")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime>("SendDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Subject")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.HasKey("MessageId");
 
-                    b.ToTable("Messages", (string)null);
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.Project", b =>
@@ -262,25 +266,29 @@ namespace MYAcademy_Portfolio.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CoverImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
 
                     b.Property<string>("GithubUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.HasKey("ProjectId");
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Projects", (string)null);
+                    b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.Skill", b =>
@@ -308,7 +316,7 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.HasIndex("SkillCategoryId");
 
-                    b.ToTable("Skills", (string)null);
+                    b.ToTable("Skills");
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.SkillCategory", b =>
@@ -340,7 +348,7 @@ namespace MYAcademy_Portfolio.Migrations
 
                     b.HasKey("SkillCategoryId");
 
-                    b.ToTable("SkillCategories", (string)null);
+                    b.ToTable("SkillCategories");
                 });
 
             modelBuilder.Entity("MYAcademy_Portfolio.Entities.Project", b =>
