@@ -85,6 +85,9 @@ This project strengthened my experience with MVC architecture, EF Core and LINQ,
 
 <img width="2514" height="1286" alt="image" src="https://github.com/user-attachments/assets/c73faa40-49a4-4fac-8ae4-f9e907192099" />
 
+<img width="2530" height="1273" alt="image" src="https://github.com/user-attachments/assets/3fd8cf5c-f675-4d9c-b226-dc49414ea231" />
+
+
 ## Developer
 
 **Yaren Kasımoğlu**  
