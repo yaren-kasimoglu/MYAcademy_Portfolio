@@ -84,6 +84,7 @@ Bu proje kapsamında MVC mimarisi, EF Core ve LINQ, CRUD işlemleri, ilişkisel 
 
 <img width="2539" height="1247" alt="image" src="https://github.com/user-attachments/assets/d43523c4-4310-43f9-8d0c-98e8144a6475" />
 
+<img width="2514" height="1286" alt="image" src="https://github.com/user-attachments/assets/6bd380b2-ae33-44e8-ab28-2f33b015bd08" />
 
 
 ## Geliştirici
