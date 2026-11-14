@@ -83,6 +83,7 @@ This project strengthened my experience with MVC architecture, EF Core and LINQ,
 
 <img width="2539" height="1247" alt="image" src="https://github.com/user-attachments/assets/79c0c38e-6ec9-4e96-a200-b2d0857ce95c" />
 
+<img width="2514" height="1286" alt="image" src="https://github.com/user-attachments/assets/c73faa40-49a4-4fac-8ae4-f9e907192099" />
 
 ## Developer
 
