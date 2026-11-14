@@ -77,6 +77,11 @@ Portfolyo ve yönetim panelinin ekran görüntüleri yakında eklenecek.
 
 Bu proje kapsamında MVC mimarisi, EF Core ve LINQ, CRUD işlemleri, ilişkisel veri modelleri, yeniden kullanılabilir ViewComponent yapıları, dashboard istatistikleri ve responsive web arayüzleri üzerine çalıştım.
 
+
+<img width="2542" height="1271" alt="image" src="https://github.com/user-attachments/assets/93ed33a4-4ceb-4a61-92d2-07371174ec01" />
+
+
+
 ## Geliştirici
 
 **Yaren Kasımoğlu**  
